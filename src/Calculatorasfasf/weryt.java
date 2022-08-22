@@ -11,24 +11,33 @@ public class weryt {
      public static void arabCalc(String str) {
          number = str.replaceAll("\\s+", "");
          String[] massiv = number.split("-|\\+|/|\\*");
+         if (massiv.length>2) {
+             return;
+         }
          String[] result = number.split("");
          int i = Integer.parseInt(massiv[0]);
          int b = Integer.parseInt(massiv[1]);
-         List<String> fromresult = Arrays.asList(result);
+         char [] symbols = number.toCharArray();
+         char symbol;
+         if (i==10) {
+             symbol = symbols[2];
+         } else {
+             symbol = symbols[1];
+         }
          if (i > 10)
              return;
          if (b > 10)
              return;
-         if (fromresult.contains("+")) {
+         if (Character.compare(symbol, '+')==0) {
              System.out.println(i+b);
          }
-         if (fromresult.contains("-")) {
+         if (Character.compare(symbol, '-')==0) {
              System.out.println(i-b);
          }
-         if (fromresult.contains("*")) {
+         if (Character.compare(symbol, '*')==0) {
              System.out.println(i*b);
          }
-         if (fromresult.contains("/")) {
+         if (Character.compare(symbol, '/')==0) {
              System.out.println(i/b);
          }
      }

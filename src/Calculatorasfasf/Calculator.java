@@ -14,7 +14,7 @@ public class Calculator {
                 weryt.arabCalc(numbers);
             } catch (NumberFormatException e) {
                 Rome.romeCalc(numbers);
-            }//hgdfghgfhf
+            }
         }
     }
 }
