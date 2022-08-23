@@ -12,16 +12,33 @@ public class Rome {
         String number = str.replaceAll("\\s+", "");
         String[] massiv = number.split("[-+/*]");
         char[] symbols = number.toCharArray();
-        char symbol;
-        if ((symbols[1] == '+') || (symbols[1] == '-') || (symbols[1] == '/') || (symbols[1] == '*')) {
-            symbol = symbols[1];
-        } else if ((symbols[2] == '+') || (symbols[2] == '-') || (symbols[2] == '/') || (symbols[2] == '*')) {
-            symbol = symbols[2];
-        } else if ((symbols[3] == '+') || (symbols[3] == '-') || (symbols[3] == '/') || (symbols[3] == '*')) {
-            symbol = symbols[3];
-        } else {
-            symbol = '|';
+        char symbol = 0;
+        for (char x:symbols) {
+            switch (x){
+                case ('+'):
+                    symbol=x;
+                    break;
+                case ('-'):
+                    symbol=x;
+                    break;
+                case ('*'):
+                    symbol=x;
+                    break;
+                case ('/'):
+                    symbol=x;
+                    break;
+            }
         }
+        int count = 0;
+        for (char x:symbols) {
+            switch (x) {
+                case ('+') -> count++;
+                case ('-') -> count++;
+                case ('*') -> count++;
+                case ('/') -> count++;
+            }
+        }
+        if (count > 1) throw new RuntimeException("Больше одного оператора");
         int i = romenumbers.get(massiv[0]);
         int b = romenumbers.get(massiv[1]);
         if (i > 10 || i < 1) throw new RuntimeException("Вы вышли за пределы допустимых значений для ввода");
